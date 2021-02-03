@@ -1,7 +1,15 @@
 package main
 
-import "github.com/lemon-mint/wipe-file-go/wiper"
+import (
+	"os"
+
+	"github.com/lemon-mint/wipe-file-go/wiper"
+)
 
 func main() {
-	wiper.Wipe7pass("test.txt")
+	if len(os.Args) >= 2 {
+		for i := range os.Args[1:] {
+			wiper.Wipe7pass(os.Args[1:][i])
+		}
+	}
 }
